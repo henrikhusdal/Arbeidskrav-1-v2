@@ -1,0 +1,30 @@
+---
+title: "Reliability"
+author: "Henrik Husdal"
+date: "2022-09-21"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r}
+library(tidyverse)
+library(readxl)
+```
+
+
+```{r}
+
+
+data_run_2 <- read_excel("data/data_run_2.xlsx")
+
+
+  data_run_2 %>% 
+  select(Timepoint,FP, lac.max) %>% 
+  mutate(diff("Pre", "Post"))
+  summarise(lac = sd(lac.max),
+            te = lac / sqrt(2))
+            
+          
+```
+
